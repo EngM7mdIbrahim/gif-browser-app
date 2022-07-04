@@ -8,16 +8,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="setup()">
     <script src="main.js"></script>
-
+    <div class="error-alert-container">
+        
+        <div class="error-alert">
+            <img onclick="closeError()"src="./images/cancel.png" alt="">
+            <h1>Error!</h1>
+            <p id="errorMessage">Test Message</p>
+        </div>
+    </div>
     <div class="toolbar">
         <img src="./images/logo.png" alt="" id="logo">
         <div class="toolbar-options">
-            <h3 class="toolbar-option">Trending</h3>
-            <h3 class="toolbar-option">Word to GIF</h3>
-            <h3 class="toolbar-option">Search</h3>
+           <div class="selector-container">
+            <div id="mode-selector" class="selector">
 
+            </div>
+            <h3 id="trending" onclick="selectMode('trending','mode')" class="toolbar-option selected">Trending</h3>
+            <h3 id="word-to-gif" onclick="selectMode('word-to-gif','mode')" class="toolbar-option">Word to GIF</h3>
+            </div>
+           <div class="selector-container">
+            <div id="img-selector" class="selector">
+
+            </div>
+            <h3 id="gifs" onclick="selectMode('gifs','img')" class="toolbar-option selected">GIFs</h3>
+            <h3 id="stickers" onclick="selectMode('stickers','img')" class="toolbar-option">Stickers</h3>
+            </div>
         </div>
     </div>
 
@@ -29,7 +46,7 @@
             <h1>Stunning free GIFs and royalty free stock </h1>
             <div class="searchbox">
                 <img src="./images/search.png" alt="" id="search-icon">
-                <input type="text" name="search" placeholder="Search GIFs">
+                <input type="text" name="search" onchange="handleChange()" placeholder="Search GIFs">
             </div>
             <p>Over 2.6 million+ high quality stock gifs shared by our talented community.</p>
             <div class="quote-container">
@@ -37,13 +54,14 @@
             </div>
         </div>
     </div>
+    <div class="loading-indicator">
+        <div class="loading-large-dot">
 
-    <div class="images-container">
-        <div class="loading-indicator">
-            <div class="loading-large-dot">
-
-            </div>
         </div>
+    </div>
+    <div class="images-container">
+        
+        <img src="./images/background.gif" alt="" class="element">
     </div>
 
 </body>
