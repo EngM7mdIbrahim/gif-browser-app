@@ -18,7 +18,8 @@ function setup() {
   modeControls = document.body.querySelector(".toolbar-options");
   root = document.documentElement;
   imageContainer = document.body.querySelector(".images-container");
-  searchBox = document.body.querySelector(".searchbox");
+  searchBox = document.body.querySelector(".searchbox input");
+  console.log('Search Box:', searchBox)
   loadingIndicator = document.body.querySelector(".loading-indicator");
   errorContainer = document.body.querySelector(".error-alert-container");
   errorAlert = document.body.querySelector(".error-alert");
@@ -62,6 +63,7 @@ function selectMode(mode, type) {
 async function getTrending() {
   try {
     setLoading(true);
+    console.log('Curr Img Type', currImgType)
     let response = await fetch(
       `https://api.giphy.com/v1/${currImgType}/trending?` +
         new URLSearchParams({
@@ -127,6 +129,7 @@ async function getTranslate(search) {
 function handleChange() {
   if (currMode === "trending") {
     console.log('Entered Search')
+    console.log('Searchbox Value',searchBox)
     getSearchResults(searchBox.value);
   } else {
     getTranslate(searchBox.value);
